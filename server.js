@@ -33,7 +33,7 @@ var parseTweets = function(body) {
 
 var getTweets = function(res, id) {
   request({
-    url: 'http://twitter.com/' + id
+    url: 'https://twitter.com/' + id
   }, function (error, response, body) {
     if (!error && response.statusCode === 200) {
       var tweets = parseTweets(body);
