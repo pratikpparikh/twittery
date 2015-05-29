@@ -15,17 +15,19 @@ var parseTweets = function(body) {
 
   var tweets = [];
 
-  $('.js-tweet').each(function(i, element) {
+  $('.js-tweet,.js-stream-item').each(function(i, element) {
     var id = $(this).attr('data-tweet-id');
     var time = $('.js-short-timestamp', this).attr('data-time');
     var text = $('.js-tweet-text', this).text();
-    text = text.replace('…', '');
+    text = text.replace('â€¦', '');
     text = text.trim();
-    tweets.push({
-      createdAt: parseInt(time, 10),
-      id: id,
-      text: text
-    });
+    if(typeof text != 'undefined' && text != null && text != ''){
+	    tweets.push({
+	      createdAt: parseInt(time, 10),
+	      id: id,
+	      text: text
+	    });
+  	}
   });
 
   return tweets;
